@@ -1,50 +1,152 @@
-import { Header as CarbonHeader, HeaderName, HeaderNavigation, HeaderMenuItem, HeaderGlobalBar, HeaderGlobalAction, Button } from '@carbon/react';
-import { User } from '@carbon/icons-react';
+import { useState } from 'react';
+import { Header as CarbonHeader, HeaderName, HeaderNavigation, HeaderGlobalBar, HeaderGlobalAction, Button } from '@carbon/react';
+import { User, ChevronDown } from '@carbon/icons-react';
+import { megaMenuData, simpleMenuItems } from '../data/menuData';
 import './Header.scss';
 
 const Header = () => {
+  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+
+  const handleMenuClick = (label: string) => {
+    setActiveMegaMenu(activeMegaMenu === label ? null : label);
+  };
+
+  const handleCloseMegaMenu = () => {
+    setActiveMegaMenu(null);
+  };
+
   return (
-    <CarbonHeader aria-label="HeartConsultants LLC" className="hc-header">
-      <HeaderName href="/" prefix="">
-        <span className="hc-header__logo">
-          <span className="hc-header__logo-heart">♥</span>
-          <span className="hc-header__logo-text">
-            <strong>Heart</strong>Consultants LLC
+    <>
+      <CarbonHeader aria-label="HeartConsultants LLC" className="hc-header">
+        <HeaderName href="/" prefix="">
+          <span className="hc-header__logo">
+            <span className="hc-header__logo-heart">♥</span>
+            <span className="hc-header__logo-text">
+              <strong>Heart</strong>Consultants LLC
+            </span>
           </span>
-        </span>
-      </HeaderName>
+        </HeaderName>
 
-      <HeaderNavigation aria-label="HeartConsultants LLC">
-        <HeaderMenuItem href="#services">
-          Services
-        </HeaderMenuItem>
-        <HeaderMenuItem href="#expertise">
-          Expertise
-        </HeaderMenuItem>
-        <HeaderMenuItem href="#insights">
-          Insights
-        </HeaderMenuItem>
-        <HeaderMenuItem href="#about">
-          About
-        </HeaderMenuItem>
-      </HeaderNavigation>
+        <HeaderNavigation aria-label="HeartConsultants LLC" className="hc-header__nav">
+          {megaMenuData.map((menu) => (
+            <div
+              key={menu.label}
+              className={`hc-header__nav-item ${activeMegaMenu === menu.label ? 'active' : ''}`}
+            >
+              <button 
+                className="hc-header__nav-button"
+                onClick={() => handleMenuClick(menu.label)}
+              >
+                {menu.label}
+                <ChevronDown size={16} className="hc-header__nav-icon" />
+              </button>
+            </div>
+          ))}
+          
+          {simpleMenuItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="hc-header__nav-link"
+            >
+              {item.label}
+            </a>
+          ))}
+        </HeaderNavigation>
 
-      <HeaderGlobalBar>
-        <Button 
-          kind="primary" 
-          size="sm"
-          className="hc-header__cta"
-        >
-          Request Consultation
-        </Button>
-        <HeaderGlobalAction 
-          aria-label="User Profile"
-          tooltipAlignment="end"
-        >
-          <User size={20} />
-        </HeaderGlobalAction>
-      </HeaderGlobalBar>
-    </CarbonHeader>
+        <HeaderGlobalBar>
+          <Button 
+            kind="primary" 
+            size="sm"
+            className="hc-header__cta"
+          >
+            Request Consultation
+          </Button>
+          <HeaderGlobalAction 
+            aria-label="User Profile"
+            tooltipAlignment="end"
+          >
+            <User size={20} />
+          </HeaderGlobalAction>
+        </HeaderGlobalBar>
+      </CarbonHeader>
+
+      {/* Mega Menu Dropdown */}
+      {activeMegaMenu && (
+        <>
+          <div 
+            className="hc-mega-menu__backdrop"
+            onClick={handleCloseMegaMenu}
+          />
+          <div className="hc-mega-menu">
+            <div className="hc-mega-menu__container">
+            {megaMenuData
+              .filter((menu) => menu.label === activeMegaMenu)
+              .map((menu) => (
+                <div key={menu.label} className="hc-mega-menu__content">
+                  {/* Featured Section */}
+                  {menu.featured && (
+                    <div className="hc-mega-menu__featured">
+                      <h3 className="hc-mega-menu__section-title">
+                        {menu.featured.title}
+                      </h3>
+                      <div className="hc-mega-menu__featured-items">
+                        {menu.featured.items.map((item) => (
+                          <a
+                            key={item.title}
+                            href={item.href}
+                            className="hc-mega-menu__featured-item"
+                          >
+                            <h4 className="hc-mega-menu__item-title">
+                              {item.title}
+                            </h4>
+                            {item.description && (
+                              <p className="hc-mega-menu__item-description">
+                                {item.description}
+                              </p>
+                            )}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Categories Grid */}
+                  <div className="hc-mega-menu__categories">
+                    {menu.categories.map((category) => (
+                      <div key={category.title} className="hc-mega-menu__category">
+                        <h3 className="hc-mega-menu__category-title">
+                          {category.title}
+                        </h3>
+                        <ul className="hc-mega-menu__list">
+                          {category.items.map((item) => (
+                            <li key={item.title}>
+                              <a
+                                href={item.href}
+                                className="hc-mega-menu__link"
+                              >
+                                {item.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* View All Link */}
+                  <div className="hc-mega-menu__footer">
+                    <a href={`/${menu.label.toLowerCase()}`} className="hc-mega-menu__view-all">
+                      View all {menu.label.toLowerCase()} →
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
