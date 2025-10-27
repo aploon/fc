@@ -23,10 +23,14 @@ const Footer = () => {
             <div className="hc-footer__left">
               <div className="hc-footer__brand">
                 <div className="hc-footer__logo">
-                  <span className="hc-footer__logo-heart">♥</span>
-                  <span className="hc-footer__logo-text">
+                  <img 
+                    src="/logo.png" 
+                    alt="HeartConsultants LLC" 
+                    className="hc-footer__logo-img"
+                  />
+                  {/* <span className="hc-footer__logo-text">
                     <strong>Heart</strong>Consultants LLC
-                  </span>
+                  </span> */}
                 </div>
               </div>
               

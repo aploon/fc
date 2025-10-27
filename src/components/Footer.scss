@@ -64,10 +64,10 @@
     }
   }
 
-  &__logo-heart {
-    color: $color-secondary;
-    font-size: $font-size-2xl;
-    line-height: 1;
+  &__logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
   }
 
   &__logo-text {

@@ -20,10 +20,14 @@ const Header = () => {
       <CarbonHeader aria-label="HeartConsultants LLC" className="hc-header">
         <HeaderName href="/" prefix="">
           <span className="hc-header__logo">
-            <span className="hc-header__logo-heart">♥</span>
-            <span className="hc-header__logo-text">
+            <img 
+              src="/logo.png" 
+              alt="HeartConsultants LLC" 
+              className="hc-header__logo-img"
+            />
+            {/* <span className="hc-header__logo-text">
               <strong>Heart</strong>Consultants LLC
-            </span>
+            </span> */}
           </span>
         </HeaderName>
 

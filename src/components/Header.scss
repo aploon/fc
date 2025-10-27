@@ -31,11 +31,10 @@
     }
   }
 
-  .hc-header__logo-heart {
-    color: var(--color-secondary, #0f62fe);
-    font-size: var(--font-size-2xl, 1.5rem);
-    line-height: 1;
-    animation: heartbeat 2s ease-in-out infinite;
+  .hc-header__logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
   }
 
   .hc-header__logo-text {
@@ -336,16 +335,20 @@
   }
 }
 
-@media (max-width: $breakpoint-md) {
-  .hc-header {
-    .hc-header__cta {
-      display: none;
-    }
+  @media (max-width: $breakpoint-md) {
+    .hc-header {
+      .hc-header__cta {
+        display: none;
+      }
 
-    .hc-header__logo-text {
-      font-size: $font-size-base;
+      .hc-header__logo-text {
+        font-size: $font-size-base;
+      }
+
+      .hc-header__logo-img {
+        height: 28px;
+      }
     }
-  }
 
   .hc-mega-menu__container {
     padding: $spacing-05 $spacing-04;
