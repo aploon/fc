@@ -1,0 +1,404 @@
+@use '../variables' as *;
+
+// ============================================
+// FOOTER - SIMPLE CSS APPROACH
+// ============================================
+
+.hc-footer {
+  background-color: $color-background;
+  border-top: 1px solid $color-gray-20;
+  margin-top: auto;
+  width: 100%;
+  
+  &__container {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__main {
+    padding: $spacing-10 $spacing-06;
+    border-bottom: 1px solid $color-gray-20;
+  }
+
+  &__bottom {
+    padding: $spacing-08 $spacing-06;
+  }
+
+  &__content {
+    display: flex;
+    gap: $spacing-10;
+    align-items: flex-start;
+  }
+
+  &__bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // ============================================
+  // LEFT COLUMN
+  // ============================================
+
+  &__left {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  &__brand {
+    margin-bottom: $spacing-08;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-03;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-05;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__logo-heart {
+    color: $color-secondary;
+    font-size: $font-size-2xl;
+    line-height: 1;
+  }
+
+  &__logo-text {
+    strong {
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  // ============================================
+  // SUBSCRIBE SECTION
+  // ============================================
+
+  &__subscribe {
+    max-width: 400px;
+  }
+
+  &__subscribe-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0 0 $spacing-03 0;
+  }
+
+  &__subscribe-description {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin: 0 0 $spacing-05 0;
+    line-height: $line-height-normal;
+  }
+
+  &__subscribe-form {
+    display: flex;
+    gap: $spacing-03;
+    align-items: flex-start;
+  }
+
+  &__email-input {
+    flex: 1;
+    
+    .cds--text-input__field-wrapper {
+      background-color: $color-background;
+      border: 1px solid $color-gray-30;
+      
+      &:focus-within {
+        border-color: $color-primary;
+        box-shadow: 0 0 0 2px $color-primary-light;
+      }
+    }
+  }
+
+  &__subscribe-btn {
+    flex-shrink: 0;
+    background-color: $color-primary;
+    border-color: $color-primary;
+    
+    &:hover {
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
+    }
+  }
+
+  // ============================================
+  // RIGHT COLUMN
+  // ============================================
+
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+  }
+
+  &__links {
+    margin-bottom: $spacing-06;
+  }
+
+  &__links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-05;
+    margin-bottom: $spacing-04;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color $transition-fast;
+    
+    &:hover {
+      color: $color-primary;
+      text-decoration: underline;
+    }
+    
+    &:focus {
+      color: $color-primary;
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  // ============================================
+  // SOCIAL MEDIA
+  // ============================================
+
+  &__social {
+    display: flex;
+    gap: $spacing-04;
+    margin-top: auto;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: $color-gray-10;
+    border-radius: 50%;
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background-color: $color-primary;
+      color: $color-text-inverse;
+      transform: translateY(-2px);
+    }
+    
+    &:focus {
+      background-color: $color-primary;
+      color: $color-text-inverse;
+      outline: 2px solid $color-primary-dark;
+      outline-offset: 2px;
+    }
+  }
+
+  // ============================================
+  // BOTTOM SECTION
+  // ============================================
+
+  &__bottom-left {
+    flex: 1;
+  }
+
+  &__mobile-app {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-04;
+  }
+
+  &__mobile-text {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin: 0;
+    line-height: $line-height-normal;
+    max-width: 300px;
+  }
+
+  &__app-buttons {
+    display: flex;
+    gap: $spacing-03;
+  }
+
+  &__app-btn {
+    background-color: $color-gray-100;
+    color: $color-text-inverse;
+    border: 1px solid $color-gray-100;
+    font-size: $font-size-xs;
+    padding: $spacing-03 $spacing-04;
+    
+    &:hover {
+      background-color: $color-gray-80;
+      border-color: $color-gray-80;
+    }
+    
+    &:focus {
+      background-color: $color-gray-80;
+      border-color: $color-gray-80;
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__bottom-right {
+    flex-shrink: 0;
+  }
+
+  &__copyright {
+    text-align: right;
+  }
+
+  &__copyright-text {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin: 0;
+  }
+
+  // ============================================
+  // RESPONSIVE DESIGN
+  // ============================================
+
+  @media (max-width: $breakpoint-lg) {
+    &__main {
+      padding: $spacing-08 $spacing-05;
+    }
+
+    &__bottom {
+      padding: $spacing-06 $spacing-05;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: $spacing-08;
+    }
+
+    &__left {
+      max-width: 100%;
+    }
+
+    &__subscribe {
+      max-width: 100%;
+    }
+
+    &__subscribe-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__subscribe-btn {
+      align-self: flex-start;
+    }
+
+    &__right {
+      min-height: auto;
+    }
+
+    &__links-row {
+      flex-direction: column;
+      gap: $spacing-03;
+    }
+
+    &__social {
+      margin-top: $spacing-05;
+    }
+
+    &__bottom-content {
+      flex-direction: column;
+      gap: $spacing-05;
+      align-items: flex-start;
+    }
+
+    &__app-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__copyright {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    &__main {
+      padding: $spacing-06 $spacing-04;
+    }
+
+    &__bottom {
+      padding: $spacing-05 $spacing-04;
+    }
+
+    &__logo {
+      font-size: $font-size-lg;
+    }
+
+    &__logo-heart {
+      font-size: $font-size-xl;
+    }
+
+    &__subscribe-title {
+      font-size: $font-size-base;
+    }
+
+    &__social {
+      justify-content: center;
+      margin-top: $spacing-05;
+    }
+
+    &__mobile-text {
+      max-width: 100%;
+    }
+
+    &__app-buttons {
+      align-items: center;
+    }
+
+    &__copyright {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    &__main {
+      padding: $spacing-05 $spacing-03;
+    }
+
+    &__bottom {
+      padding: $spacing-04 $spacing-03;
+    }
+
+    &__logo {
+      font-size: $font-size-base;
+    }
+
+    &__logo-heart {
+      font-size: $font-size-lg;
+    }
+
+    &__social {
+      gap: $spacing-03;
+    }
+
+    &__social-link {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}

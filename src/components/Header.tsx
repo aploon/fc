@@ -1,6 +1,6 @@
+import { ChevronDown, User } from '@carbon/icons-react';
+import { Button, Header as CarbonHeader, HeaderGlobalBar, HeaderName, HeaderNavigation, OverflowMenu, OverflowMenuItem } from '@carbon/react';
 import { useState } from 'react';
-import { Header as CarbonHeader, HeaderName, HeaderNavigation, HeaderGlobalBar, HeaderGlobalAction, Button, OverflowMenu, OverflowMenuItem } from '@carbon/react';
-import { User, ChevronDown, Filter } from '@carbon/icons-react';
 import { megaMenuData, simpleMenuItems } from '../data/menuData';
 import './Header.scss';
 
