@@ -24,23 +24,25 @@ export default function Navbar() {
               <Header aria-label="HeartConsultants LLC">
                 <SkipToContent />
                 <HeaderMenuButton aria-label={isSideNavExpanded ? 'Close menu' : 'Open menu'} onClick={onClickSideNavExpand} isActive={isSideNavExpanded} aria-expanded={isSideNavExpanded} />
-                <HeaderName href="/" prefix="HeartConsultants">
-                  LLC
+                <HeaderName href="/" prefix="">
+                  <span className="flex items-center gap-2">
+                    <img src="/logo.png" alt="HeartConsultants LLC" className="h-13 w-auto" />
+                  </span>
                 </HeaderName>
                 <HeaderNavigation aria-label="Main navigation">
                   {simpleMenuItems.map((item) => (
-                    <HeaderMenuItem className='!text-base' href={item.href} key={item.href}>{item.label}</HeaderMenuItem>
+                    <HeaderMenuItem href={item.href} key={item.href}>{item.label}</HeaderMenuItem>
                   ))}
                   {megaMenuData.map((group) => (
                     <HeaderMenu aria-label={group.label} menuLinkName={group.label} key={group.label}>
                       {/* Featured items first if present */}
                       {group.featured?.items.map((fi) => (
-                        <HeaderMenuItem className='!text-base' href={fi.href} key={`featured-${fi.href}`}>{fi.title}</HeaderMenuItem>
+                        <HeaderMenuItem href={fi.href} key={`featured-${fi.href}`}>{fi.title}</HeaderMenuItem>
                       ))}
                       {/* Flatten categories into menu items */}
                       {group.categories.flatMap((cat) => (
                         cat.items.map((mi) => (
-                          <HeaderMenuItem className='!text-base' href={mi.href} key={`${group.label}-${mi.href}`}>{mi.title}</HeaderMenuItem>
+                          <HeaderMenuItem href={mi.href} key={`${group.label}-${mi.href}`}>{mi.title}</HeaderMenuItem>
                         ))
                       ))}
                     </HeaderMenu>
@@ -61,16 +63,16 @@ export default function Navbar() {
                   <SideNavItems>
                     <HeaderSideNavItems>
                       {simpleMenuItems.map((item) => (
-                        <HeaderMenuItem className='!text-base' href={item.href} key={`side-${item.href}`}>{item.label}</HeaderMenuItem>
+                        <HeaderMenuItem href={item.href} key={`side-${item.href}`}>{item.label}</HeaderMenuItem>
                       ))}
                       {megaMenuData.map((group) => (
                         <HeaderMenu aria-label={group.label} menuLinkName={group.label} key={`side-${group.label}`}>
                           {group.featured?.items.map((fi) => (
-                            <HeaderMenuItem className='!text-base' href={fi.href} key={`side-featured-${fi.href}`}>{fi.title}</HeaderMenuItem>
+                            <HeaderMenuItem href={fi.href} key={`side-featured-${fi.href}`}>{fi.title}</HeaderMenuItem>
                           ))}
                           {group.categories.flatMap((cat) => (
                             cat.items.map((mi) => (
-                              <HeaderMenuItem className='!text-base' href={mi.href} key={`side-${group.label}-${mi.href}`}>{mi.title}</HeaderMenuItem>
+                              <HeaderMenuItem href={mi.href} key={`side-${group.label}-${mi.href}`}>{mi.title}</HeaderMenuItem>
                             ))
                           ))}
                         </HeaderMenu>
