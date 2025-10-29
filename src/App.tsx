@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           <p>Explore IBM history and culture of putting technology to work in the real world.</p>
         </div>
       </main>
+      <Footer />
     </>
   )
 }
