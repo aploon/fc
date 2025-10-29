@@ -1,9 +1,10 @@
 @use '@carbon/react' with (
-  $font-path: '@ibm/plex'
+  $font-path: '@ibm/plex',
+  $theme: (
+    
+  )
 );
-
-// Import HeartConsultants LLC Design System
-@use './variables' as *;
+@use '@carbon/react/scss/type';
 
 /// Remove overrides once Carbon bugs are fixed upstream.
 /// Need grid option to not add page gutters at large viewports, to also use when nesting grids
@@ -36,4 +37,9 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+// custom
+a.cds--header__menu-item {
+  @include type.type-style('body-compact-02');
 }
