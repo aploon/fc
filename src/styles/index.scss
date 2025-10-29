@@ -43,3 +43,6 @@ body {
 a.cds--header__menu-item {
   @include type.type-style('body-compact-02');
 }
+.cds--side-nav a.cds--header__menu-item {
+  @include type.type-style('body-compact-02');
+}
